@@ -1,12 +1,17 @@
 {% extends 'base.html'%}
 
 {% block title %}
-<h2>キャラクター一覧</h2>
+キャラクター一覧
 {% endblock title %}
 
 
 
 {% block header %}
+{% for names in data %}
+    <li>
+        {{ names.character_name}}
+    </li>
+    {% endfor %}
 {% endblock header %}
 
 

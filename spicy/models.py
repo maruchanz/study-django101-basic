@@ -9,7 +9,10 @@ GENDER_CHOICE = (
 )
 
 class questionnaire(models.Model):
-    character_name = models.TextField(verbose_name="名前",null =True, max_length = 30)    
+    character_name = models.TextField(verbose_name="名前",null =False, max_length = 30)    
     gender_data = models.CharField(verbose_name="性別", choices = GENDER_CHOICE, max_length = 4)
-    character_features = models.TextField(verbose_name="特徴", null = True,max_length = 30)    
+    character_features = models.TextField(verbose_name="特徴", null = False ,max_length = 30)    
+
+    def __str__(self):
+        return self.character_name
 

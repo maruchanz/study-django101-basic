@@ -4,16 +4,13 @@
 {% endblock title %}
 
 {% block header %}
-
-
-
 <p>
-キャラクター一覧
+ <a href="{% url 'spicy:kimetsu2' %}">キャラクター一覧</a>
+
 </p>   
 
- <a href="http://127.0.0.1:8000/kimetsu1/">キャラクター登録</a>
+<a href="{% url 'spicy:kimetsu1' %}">キャラクター登録</a>
 {% endblock header %}
 
 {% block content %}
-{{data.gender_data}}
 {% endblock content %}

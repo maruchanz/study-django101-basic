@@ -52,13 +52,12 @@
     <div class = "container">
     <h2>鬼滅の刃</h2>
 
-    <a href="">ホーム</a>
+    <a href="{% url 'spicy:index' %}">ホーム</a>
 
 
         <h1>
             {% block header %}
-            <li>{{data.gender_data}}</li>
-
+            
             {% endblock header %}
         </h1>
             {%block content%}

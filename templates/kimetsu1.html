@@ -7,7 +7,7 @@
 
 
 {% block header %}
-<form action = "/", method = "post">
+<form action ="{% url 'spicy:kimetsu1' %}", method = "post">
     {% csrf_token %}
     <h3>キャラクター登録</h3>
     {{form.as_p}}

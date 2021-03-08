@@ -12,11 +12,12 @@ def index(request):
 def kimetsu1(request):
     if request.method == 'POST':
         form = QuestionnaireForm(request.POST)
+        is_valid = form.is_valid()    
         if form.is_valid():
             form.save()         
-        data=questionnaire.objects.order_by("id").last()
-        x= data.gender_data
-       
+        data=questionnaire.objects.order_by("id")
+        print(data)
+        
         return TemplateResponse(request, 'index.html',
                                 {'form': form,
                                 'data':data})
@@ -28,4 +29,8 @@ def kimetsu1(request):
                                 {'form':form})
 
 def kimetsu2(request):
-      return TemplateResponse(request, 'kimetsu2.html')
+        data=questionnaire.objects.order_by("id")
+        print(data)
+        
+        return TemplateResponse(request, 'kimetsu2.html',
+                                {'data':data})
