@@ -8,10 +8,6 @@ from .tables import ItemTable
 
 # Create your views here.
 def index(request):
-      data=questionnaire.objects.all()
-      for x, y, z in range(data):
-            print(x, y, z)
-
       return TemplateResponse(request, 'index.html')
 
 
