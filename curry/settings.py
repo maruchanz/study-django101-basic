@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'spicy',
-    'django-tables2',
+    'django_tables2',
 ]
 
 MIDDLEWARE = [

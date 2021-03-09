@@ -3,11 +3,15 @@ from django.http import HttpResponse
 from django.template.response import TemplateResponse
 from .models import questionnaire
 from .forms import QuestionnaireForm
-from django-tables2 import SingleTableView
+from django_tables2 import SingleTableView
 from .tables import ItemTable
 
 # Create your views here.
 def index(request):
+      data=questionnaire.objects.all()
+      for x, y, z in range(data):
+            print(x, y, z)
+
       return TemplateResponse(request, 'index.html')
 
 
@@ -17,7 +21,7 @@ def kimetsu1(request):
         is_valid = form.is_valid()    
         if form.is_valid():
             form.save()         
-        data=questionnaire.objects.order_by("id")
+        data=questionnaire.objects.order_by("gender_name")
         print(data)
         
         return TemplateResponse(request, 'index.html',
@@ -30,12 +34,12 @@ def kimetsu1(request):
     return TemplateResponse(request, 'kimetsu1.html',
                                 {'form':form})
 
-def kimetsu2(request):
-        data=questionnaire.objects.order_by("id")
-        print(data)
+# def kimetsu2(request):
+#         data=questionnaire.objects.order_by("id")
+#         print(data)
         
-        return TemplateResponse(request, 'kimetsu2.html',
-                                {'data':data})
+#         return TemplateResponse(request, 'kimetsu2.html',
+#                                 {'data':data})
 
 
 # djangoのクラスベースビューしよう（引数はtables2の組込関数？）
@@ -45,6 +49,9 @@ class DetailView(SingleTableView):
       template_name = 'kimetsu2.html'
 
       def get_queryset(self):
-            return Item.objects.all()
+            # data=questionnaire.objects.order_by("id")
+            # print(data)
+
+            return questionnaire.objects.all()
 
 
