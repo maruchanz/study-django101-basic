@@ -17,12 +17,9 @@ def kimetsu1(request):
         is_valid = form.is_valid()    
         if form.is_valid():
             form.save()         
-        data=questionnaire.objects.order_by("gender_name")
-        print(data)
         
         return TemplateResponse(request, 'index.html',
-                                {'form': form,
-                                'data':data})
+                                {'form': form})
     else:            
         form = QuestionnaireForm()
     
