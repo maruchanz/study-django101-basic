@@ -48,7 +48,17 @@
     {% endblock title %}</title>
   </head>
   <body>
-    
+    {% comment %} {% if user.is_authenticated %}
+          <li>
+            <a class="nav-item nav-link" href="{% url 'register:logout' %}">ログアウト</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-item nav-link" href="{% url 'register:login' %}">
+            ようこそ、ゲスト！ログインはこちら
+          </a>
+          </li>
+          {% endif %} {% endcomment %}
     <div class = "container">
     <h2>鬼滅の刃</h2>
 

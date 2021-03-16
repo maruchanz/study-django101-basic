@@ -10,15 +10,23 @@
 
 
 {% block header %}
-{% for names in data %}
+{% comment %} {% for names in data %}
     <li>
         {{ names.character_name}}
     </li>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
 
 
     {% load render_table from django_tables2 %}
+
+    {% comment %} {% if filter %}
+        <form action="" method="get" class="form form-inline">
+            {% bootstrap_form filter.form layout='inline' %}
+            {% bootstrap_button 'filter' %}
+        </form>
+    {% endif %} {% endcomment %}
     {% render_table table %}
+    
 
 {% endblock header %}
 
