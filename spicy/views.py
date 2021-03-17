@@ -6,7 +6,7 @@ from .forms import QuestionnaireForm
 from django_tables2 import SingleTableView
 from .tables import ItemTable
 from  django.contrib.auth import authenticate, login
-cfrom django.contrib.auth import logout
+from django.contrib.auth import logout
 # なぜかエラー
 # from django_filters.views import FilterView
 
