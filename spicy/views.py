@@ -68,15 +68,14 @@ def loginfunc(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username = username, password = password)
+        print(user)
         # name = request.session.get['username']
         # request.session['username'] = name
         if user is not None:
-            login(request, user)
-        
+            login(request, user)    
             return render(request, 'index.html', {'context':'loged in',
-                                                  'username':username
-                                                  })
-
+                                                'user':user
+                                                })
         else:
             return render(request, 'login.html', {'context':'not loged in'})
 
@@ -86,6 +85,8 @@ def loginfunc(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+ 
 
 # class FilterListView(SingletableMixin, FilterView):
 #       table_class = ItemTable
