@@ -1,7 +1,7 @@
 from django.urls import path
 import spicy.views
 from .views import DetailView
-from .views import loginfunc, logout_view
+from .views import loginfunc, logout_view, mypage
 
 
 app_name = 'spicy'
@@ -12,7 +12,8 @@ urlpatterns = [
     path('kimetsu1/', spicy.views.kimetsu1, name='kimetsu1'),
     path('kimetsu2/', DetailView.as_view(), name='kimetsu2'),
     path('login/', loginfunc, name = 'login'),
-    path('logout/', logout_view, name = 'logout')
+    path('logout/', logout_view, name = 'logout'),
+    path('mypage/', mypage, name = 'my_page')
     # path('login/', views.Login.as_view(), name = 'login'),
     # path('logout/', views.Logout.as_view(), name = 'logout'),
     # path('detail/', DetailView.as_view(), name ='detail')

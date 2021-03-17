@@ -7,12 +7,14 @@ from django_tables2 import SingleTableView
 from .tables import ItemTable
 from  django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.views.generic import TemplateView
+
 # なぜかエラー
 # from django_filters.views import FilterView
 
 
 # ログイン用
-# from django.contrib.auth.mixins import LoginRequireMixin    
+from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.contrib.auth.views import LoginView, LogoutView
 # from django.views import generic
 # from .forms import LoginForm
@@ -86,7 +88,17 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
- 
+# class Mypage(LoginRequiredMixin, TemplateView):
+#     template_name = 'templates/mypage.html'
+
+def mypage(request):
+    user = request.user
+    return render(request, 'mypage.html', {'user':user})
+        # user = authenticate(request, username = username, password = password)
+        # print(user)
+        # # context['staff_list'] = Staff.objects.filter(user=self.request.user).order_by('name')
+        # # context['schedule_list'] = Schedule.objects.filter(staff__user=self.request.user, start__gte=timezone.now()).order_by('name')
+        # return user
 
 # class FilterListView(SingletableMixin, FilterView):
 #       table_class = ItemTable
