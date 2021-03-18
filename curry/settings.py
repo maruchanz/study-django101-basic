@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'spicy',
     'django_tables2',
+    'django_filters',
+    'bootstrapform'
 ]
 
 MIDDLEWARE = [

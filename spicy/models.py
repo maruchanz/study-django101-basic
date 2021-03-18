@@ -17,6 +17,7 @@ class questionnaire(models.Model):
     gender_data = models.CharField(verbose_name="性別", choices = GENDER_CHOICE, max_length = 4)
     character_features = models.CharField(verbose_name="特徴", null = False ,max_length = 30)    
     media_data = models.ImageField(verbose_name ="画像",null = False, upload_to = 'media',)
+    URL = models.URLField(verbose_name="URL", null=True, max_length=400)
 
     def __str__(self):
         return self.character_name\

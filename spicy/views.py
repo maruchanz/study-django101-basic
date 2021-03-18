@@ -7,7 +7,8 @@ from django_tables2 import SingleTableView
 from .tables import ItemTable
 from  django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from .filters import QuestionnaireFilter
 
 # なぜかエラー
 # from django_filters.views import FilterView
@@ -54,15 +55,24 @@ def kimetsu1(request):
 # djangoのクラスベースビューしよう（引数はtables2の組込関数？）
 
 class DetailView(SingleTableView):
-      table_class = ItemTable
-      # nameでの表記可能？
-      template_name = 'kimetsu2.html'
+    table_class = ItemTable
+    # nameでの表記可能？
+    template_name = 'kimetsu2.html'
+    model = questionnaire
+  
+    def get_queryset(self):
+        # data=questionnaire.objects.order_by("id")
+        # print(data)
+        return questionnaire.objects.all()
 
-      def get_queryset(self):
-            # data=questionnaire.objects.order_by("id")
-            # print(data)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # print(context)
+        # print(self.request.GET)
+        # print(self.get.queryset())
+        context['filter'] = QuestionnaireFilter(self.request.GET, queryset = questionnaire.objects.all())
+        return context
 
-            return questionnaire.objects.all()
 
 
 def loginfunc(request):

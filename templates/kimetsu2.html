@@ -1,5 +1,5 @@
 {% extends 'base.html'%}
-
+{% load bootstrap %}
 {% block title %}
 キャラクター一覧
 {% endblock title %}
@@ -32,5 +32,16 @@
 
 
 {% block content %}
+
+<div class="container">
+    <form method ="GET">
+        {{filter.form|bootstrap}}
+        <button type = "submit" class = "btn btn-primary">Search</button>
+    </form>
+<ul>
+    {% for data in filter.qs %}
+        <li>{{data}}</li>
+    {% endfor %}
+</ul>
 
 {% endblock content %}
